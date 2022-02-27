@@ -69,11 +69,7 @@ function App() {
       return;
     }
 
-    sendCartData(cart).then(() => {
-      setTimeout(() => {
-        dispatch(uiActions.clearNotification());
-      }, 1500);
-    }).catch((_err) => {
+    sendCartData(cart).catch((_err) => {
       dispatch(uiActions.showNotification({
         status: 'error',
         title: 'Error',
