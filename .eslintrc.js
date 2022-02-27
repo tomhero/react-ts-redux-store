@@ -21,6 +21,9 @@ module.exports = {
         "react",
         "@typescript-eslint"
     ],
+    "rules": {
+        'no-param-reassign': ['error', { props: true, ignorePropertyModificationsFor: ['state'] }]
+    },
     "settings": {
         "import/resolver": {
             "typescript": {}
