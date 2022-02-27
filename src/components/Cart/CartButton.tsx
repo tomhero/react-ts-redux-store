@@ -1,7 +1,8 @@
+import React from 'react';
+
 import classes from './CartButton.module.css';
 
-type CartButtonProps = {
-};
+type CartButtonProps = unknown;
 
 const CartButton = (_props: CartButtonProps) => {
   return (

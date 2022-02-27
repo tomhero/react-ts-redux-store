@@ -1,8 +1,10 @@
+import React from 'react';
+
 import Card from '../UI/Card';
 import classes from './Cart.module.css';
 import CartItem from './CartItem';
 
-type CartProps = {};
+type CartProps = unknown;
 
 const Cart = (_props: CartProps) => {
   return (

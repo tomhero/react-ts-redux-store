@@ -1,8 +1,9 @@
+import React from 'react';
+
 import ProductItem from './ProductItem';
 import classes from './Products.module.css';
 
-type ProductProps = {
-};
+type ProductProps = unknown;
 
 const Products = (props: ProductProps) => {
   return (
