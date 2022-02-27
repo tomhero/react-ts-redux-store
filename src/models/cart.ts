@@ -1,10 +1,9 @@
-export type CartItem = {
-  id: number
+export type CartItemType = {
+  id: string
   name: string
   price: number
   quantity: number
   totalPrice: number
 }
 
-
-export type DisplayCartItem = Omit<CartItem, 'quantity' | 'totalPrice'>;
+export type DisplayCartItemType = Omit<CartItemType, 'quantity' | 'totalPrice'>;

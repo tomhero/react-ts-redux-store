@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { useAppDispatch } from '../../hooks/redux';
+import { useAppDispatch, useAppSelector } from '../../hooks/redux';
 import { uiActions } from '../../store/ui-slice';
 
 import classes from './CartButton.module.css';
@@ -9,6 +9,7 @@ type CartButtonProps = unknown;
 
 const CartButton = (_props: CartButtonProps) => {
 
+  const { totlalQuantity } = useAppSelector((state) => state.cart)
   const dispatch = useAppDispatch();
 
   const toggleCartHandler = () => {
@@ -18,7 +19,7 @@ const CartButton = (_props: CartButtonProps) => {
   return (
     <button className={classes.button} onClick={toggleCartHandler}>
       <span>My Cart</span>
-      <span className={classes.badge}>1</span>
+      <span className={classes.badge}>{totlalQuantity}</span>
     </button>
   );
 };

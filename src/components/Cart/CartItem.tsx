@@ -1,28 +1,38 @@
 import React from 'react';
+import { useAppDispatch } from '../../hooks/redux';
+import { CartItemType } from '../../models/cart';
+import { cartActions } from '../../store/cart-slice';
 
 import classes from './CartItem.module.css';
 
-type Merchandise = {
-  title: string
-  quantity: number
-  total: number
-  price: number
-};
-
 type CartButtonProps = {
-  item: Merchandise;
+  item: CartItemType;
 };
 
 
 const CartItem = (props: CartButtonProps) => {
-  const { title, quantity, total, price } = props.item;
+  const dispatch = useAppDispatch();
+
+  const { id, name, quantity, totalPrice, price } = props.item;
+
+  const addItemHandler = () => {
+    dispatch(cartActions.addItemToCart({
+      id,
+      name,
+      price,
+    }));
+  };
+
+  const removeItemHandler = () => {
+    dispatch(cartActions.removeItemFromCart(id));
+  };
 
   return (
     <li className={classes.item}>
       <header>
-        <h3>{title}</h3>
+        <h3>{name}</h3>
         <div className={classes.price}>
-          ${total.toFixed(2)}{' '}
+          ${totalPrice.toFixed(2)}{' '}
           <span className={classes.itemprice}>(${price.toFixed(2)}/item)</span>
         </div>
       </header>
@@ -31,8 +41,8 @@ const CartItem = (props: CartButtonProps) => {
           x <span>{quantity}</span>
         </div>
         <div className={classes.actions}>
-          <button>-</button>
-          <button>+</button>
+          <button onClick={removeItemHandler}>-</button>
+          <button onClick={addItemHandler}>+</button>
         </div>
       </div>
     </li>
