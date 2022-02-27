@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { CartItemType, DisplayCartItemType } from '../models/cart';
 
 // Define a type for the slice state
-interface ICartState {
+export interface ICartState {
   items: CartItemType[]
   totlalQuantity: number
   changed: boolean

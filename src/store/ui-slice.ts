@@ -1,8 +1,10 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { NotficationType } from '../models/ui';
 
 // Define a type for the slice state
-interface IUIState {
+export interface IUIState {
   cartIsVisible: boolean
+  notification?: NotficationType
 }
 
 
@@ -21,6 +23,12 @@ const initialState: IUIState = {
       // (By redux tookit)
       state.cartIsVisible = !state.cartIsVisible;
     },
+    showNotification(state, action: PayloadAction<NotficationType>) {
+      state.notification = action.payload;
+    },
+    clearNotification(state) {
+      state.notification = undefined;
+    }
   },
 });
 
